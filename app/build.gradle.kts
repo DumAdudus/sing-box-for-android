@@ -55,9 +55,9 @@ fun getVersionProps(propName: String): String {
 
 android {
     namespace = "io.nekohasekai.sfa"
-    compileSdk = 36
 
-    ndkVersion = "28.0.13004108"
+    compileSdk = 36
+    ndkVersion = "29.0.14206865"
 
     System.getenv("ANDROID_NDK_HOME")?.let { ndkPath = it }
 
@@ -67,12 +67,12 @@ android {
     }
 
     defaultConfig {
-        applicationId = "io.nekohasekai.sfa"
-        minSdk = 21
+        applicationId = "io.nekohasekai.sfar"
+        minSdk = 35
         targetSdk = 35
         versionCode = getVersionProps("VERSION_CODE").toInt()
         versionName = getVersionProps("VERSION_NAME")
-        base.archivesName.set("SFA-${versionName}")
+        base.archivesName.set("SFAR-${versionName}")
     }
 
     signingConfigs {
@@ -108,7 +108,6 @@ android {
             minSdk = 23
         }
         create("other") {
-            minSdk = 23
         }
         create("otherLegacy") {
             minSdk = 21
@@ -133,15 +132,15 @@ android {
     splits {
         abi {
             isEnable = true
-            isUniversalApk = true
+            isUniversalApk = false
             reset()
-            include("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
+            include("arm64-v8a")
         }
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 
     androidResources {
@@ -344,7 +343,7 @@ if (playCredentialsJSON.exists()) {
 
 tasks.withType<KotlinCompile>().configureEach {
     compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_17)
+        jvmTarget.set(JvmTarget.JVM_21)
     }
 }
 
