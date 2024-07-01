@@ -62,7 +62,7 @@ android {
     compileSdk = 37
     compileSdkMinor = 1
 
-    ndkVersion = "28.0.13004108"
+    ndkVersion = "30.0.16248370"
 
     System.getenv("ANDROID_NDK_HOME")?.let { ndkPath = it }
 
@@ -72,12 +72,12 @@ android {
     }
 
     defaultConfig {
-        applicationId = "io.nekohasekai.sfa"
-        minSdk = 24
+        applicationId = "io.nekohasekai.sfar"
+        minSdk = 36
         targetSdk = 37
         versionCode = getVersionProps("VERSION_CODE").toInt()
         versionName = getVersionProps("VERSION_NAME")
-        base.archivesName.set("SFA-${versionName}")
+        base.archivesName.set("SFAR-${versionName}")
     }
 
     signingConfigs {
@@ -134,9 +134,9 @@ android {
     splits {
         abi {
             isEnable = true
-            isUniversalApk = true
+            isUniversalApk = false
             reset()
-            include("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
+            include("arm64-v8a")
         }
     }
 
