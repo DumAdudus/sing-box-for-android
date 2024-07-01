@@ -4,10 +4,11 @@ plugins {
 
 android {
     namespace = "io.github.libxposed.api"
-    compileSdk = 36
+    compileSdk = 37
+    compileSdkMinor = 1
 
     defaultConfig {
-        minSdk = 21
+        minSdk = 36
     }
 
     buildFeatures {
